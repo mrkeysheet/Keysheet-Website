@@ -1,0 +1,1582 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key.Sheet — Built Around Your Business</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Space+Grotesk:wght@400..700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        paper: '#E0D8C8',
+                        'paper-card': '#EFE9DD',
+                        'paper-light': '#F7F3EC',
+                        cocoa: '#6D4C41',
+                        'cocoa-dark': '#4A332B',
+                        terracotta: '#C1694F',
+                        'terracotta-dark': '#A3533B',
+                        'retro-green': '#5A7D6C'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'retro': '4px 4px 0px 0px #6D4C41',
+                        'retro-sm': '2px 2px 0px 0px #6D4C41',
+                        'retro-lg': '6px 6px 0px 0px #6D4C41',
+                        'retro-terracotta': '4px 4px 0px 0px #C1694F',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #E0D8C8;
+            color: #6D4C41;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, .font-heading {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+        .retro-border {
+            border: 2px solid #6D4C41;
+        }
+        .grid-pattern {
+            background-image: radial-gradient(#6D4C41 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+            opacity: 0.15;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #EFE9DD;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #C1694F;
+            border-radius: 3px;
+        }
+        
+        /* Animasi Muncul Perlahan untuk Gambar Modal */
+.fade-in-image {
+  opacity: 0;
+  transform: translateY(15px) scale(0.98);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-image.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Styling Efek Scroll */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden antialiased">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-[#E0D8C8]/90 backdrop-blur-md border-b-2 border-cocoa transition-all duration-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+     <div class="container footer-grid">
+  <!-- Pembungkus Flexbox bawa logo di kiri, teks di kanan -->
+  <a href="#" class="flex items-center gap-3 text-decoration-none">
+    
+    <!-- 1. Logo (Di sebelah Kiri) -->
+    <img src="logo.png" alt="Key.Sheet" class="w-20 h-auto" style="margin: 5px;">
+
+    <!-- 2. Teks (Di samping Kanan Logo) -->
+    <div class="flex flex-col text-left">
+      <span class="font-heading font-bold text-xl text-cocoa leading-none tracking-tight">Key.Sheet</span>
+      <span class="text-[10px] font-semibold tracking-wider text-terracotta uppercase">Built Around Your Business</span>
+    </div>
+
+  </a>
+</div>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-6 font-semibold text-sm">
+                <a href="#why-us" class="hover:text-terracotta transition-colors">Kenapa Kami</a>
+                <a href="#services" class="hover:text-terracotta transition-colors">Layanan</a>
+                <a href="#portfolio" class="hover:text-terracotta transition-colors">Portfolio</a>
+                <a href="#pricing" class="hover:text-terracotta transition-colors">Harga</a>
+                <a href="#templates" class="hover:text-terracotta transition-colors">Template Digital</a>
+                <a href="#faq" class="hover:text-terracotta transition-colors">FAQ</a>
+            </nav>
+
+            <!-- Nav Actions -->
+            <div class="hidden md:flex items-center gap-3">
+                <a href="https://wa.me/6285871171523?text=Halo%20Key.Sheet,%20saya%20inGIN%20konsultasi%20mengenai%20kebutuhan%20Google%20Sheets" 
+                   target="_blank" 
+                   class="inline-flex items-center gap-2 bg-terracotta text-paper px-5 py-2.5 rounded-lg retro-border shadow-retro-sm font-heading font-bold text-sm hover:bg-terracotta-dark hover:translate-x-0.5 hover:translate-y-0.5 transition-all">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                    Konsultasi
+                </a>
+            </div>
+
+            <!-- Mobile Hamburger Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-cocoa retro-border bg-paper-card shadow-retro-sm rounded-md" aria-label="Toggle Menu">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden bg-paper-card border-b-2 border-cocoa px-4 pt-4 pb-6 space-y-3">
+            <a href="#why-us" class="block py-2 text-cocoa font-semibold border-b border-cocoa/10">Kenapa Kami</a>
+            <a href="#services" class="block py-2 text-cocoa font-semibold border-b border-cocoa/10">Layanan</a>
+            <a href="#portfolio" class="block py-2 text-cocoa font-semibold border-b border-cocoa/10">Portfolio</a>
+            <a href="#pricing" class="block py-2 text-cocoa font-semibold border-b border-cocoa/10">Harga</a>
+            <a href="#templates" class="block py-2 text-cocoa font-semibold border-b border-cocoa/10">Template Digital</a>
+            <a href="#faq" class="block py-2 text-cocoa font-semibold border-b border-cocoa/10">FAQ</a>
+            <div class="pt-2">
+                <a href="https://wa.me/6285871171523?text=Halo%20Key.Sheet,%20saya%20ingin%20konsultasi%20mengenai%20kebutuhan%20Google%20Sheets" 
+                   target="_blank" 
+                   class="w-full flex items-center justify-center gap-2 bg-terracotta text-paper py-3 rounded-lg retro-border shadow-retro font-heading font-bold">
+                    <i data-lucide="message-square" class="w-5 h-5"></i>
+                    Konsultasi via WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-32 overflow-hidden border-b-2 border-cocoa">
+        <div class="absolute inset-0 grid-pattern pointer-events-none"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-6 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-paper-card retro-border shadow-retro-sm text-xs font-bold uppercase tracking-wider text-terracotta">
+                        <span class="w-2 h-2 rounded-full bg-terracotta animate-pulse"></span>
+                        Built Around Your Business
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-heading text-cocoa leading-tight">
+                        Sistem Google Sheets <span class="text-terracotta underline decoration-2 underline-offset-4">Dirancang</span> Sesuai Cara Kerja Anda
+                    </h1>
+                    
+                    <p class="text-lg sm:text-xl text-cocoa/90 max-w-2xl mx-auto lg:mx-0 font-normal">
+                        Bukan sekadar spreadsheet biasa, kami membuat sistem kerja otomatis, terstruktur, dan visual tanpa software tambahan yang rumit.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <button onclick="openBriefModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-terracotta text-paper px-8 py-4 rounded-xl retro-border shadow-retro font-heading font-bold text-base hover:bg-terracotta-dark hover:-translate-y-0.5 transition-all">
+                            <i data-lucide="file-plus" class="w-5 h-5"></i>
+                            Buat Custom Sheet
+                        </button>
+                        <a href="#portfolio" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-paper-card text-cocoa px-8 py-4 rounded-xl retro-border shadow-retro font-heading font-bold text-base hover:bg-paper-light hover:-translate-y-0.5 transition-all">
+                            <i data-lucide="layout-grid" class="w-5 h-5"></i>
+                            Lihat Portfolio
+                        
+                       <a href="#templates" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-terracotta text-paper px-8 py-4 rounded-xl retro-border shadow-retro font-heading font-bold text-base hover:bg-paper-light hover:-translate-y-0.5 transition-all relative z-10 cursor-pointer">
+  <i data-lucide="shopping-cart" class="w-5 h-5 pointer-events-none"></i>
+  <span class="pointer-events-none">Beli Template</span>
+</a>
+                        </a>
+                    </div>
+
+                    <!-- Client Trust Tag -->
+                    <div class="pt-4 flex items-center justify-center lg:justify-start gap-6 text-sm text-cocoa/80 font-medium">
+                        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-terracotta"></i> Tanpa Langganan</span>
+                        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-terracotta"></i> 100% Google Sheets</span>
+                        <span class="flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-terracotta"></i> Siap Pakai</span>
+                    </div>
+                </div>
+
+                <!-- Right Hero Visual / Interactive Spreadsheet Mockup -->
+                <div class="lg:col-span-6">
+                    <div class="bg-paper-card rounded-2xl retro-border shadow-retro-lg overflow-hidden border-2 border-cocoa">
+                        <!-- Mockup Header -->
+                        <div class="bg-cocoa text-paper px-4 py-3 flex items-center justify-between border-b-2 border-cocoa">
+                            <div class="flex items-center gap-2">
+                                <span class="w-3 h-3 rounded-full bg-[#E57373]"></span>
+                                <span class="w-3 h-3 rounded-full bg-[#FFB74D]"></span>
+                                <span class="w-3 h-3 rounded-full bg-[#81C784]"></span>
+                                <span class="ml-2 font-heading text-xs tracking-wider opacity-80">KEY.SHEET — Business OS Dashboard</span>
+                            </div>
+                            <span class="text-[10px] bg-terracotta px-2 py-0.5 rounded font-mono">LIVE PREVIEW</span>
+                        </div>
+
+                        <!-- Mockup Sheets Toolbar -->
+                        <div class="bg-paper-light px-4 py-2 border-b border-cocoa/20 flex items-center gap-4 text-xs font-mono text-cocoa/80 overflow-x-auto">
+                            <span class="font-bold text-terracotta">fx</span>
+                            <span class="bg-paper px-2 py-0.5 rounded border border-cocoa/30">=SUM(D4:D12) * AUTOMATION()</span>
+                            <div class="ml-auto flex items-center gap-2 text-[11px]">
+                                <span class="inline-block w-2 h-2 rounded-full bg-green-600"></span> Synced Live
+                            </div>
+                        </div>
+
+                        <!-- Spreadsheet Visual Content -->
+                        <div class="p-5 space-y-5 bg-paper">
+                            <!-- KPI Cards Row -->
+                            <div class="grid grid-cols-3 gap-3">
+                                <div class="bg-paper-card p-3 rounded-lg border border-cocoa shadow-retro-sm">
+                                    <div class="text-[10px] uppercase font-bold text-cocoa/70">Total Revenue</div>
+                                    <div class="text-lg font-heading font-bold text-cocoa mt-0.5">Rp 128.500.000</div>
+                                    <div class="text-[10px] text-retro-green font-bold flex items-center gap-0.5 mt-1">
+                                        <i data-lucide="trending-up" class="w-3 h-3"></i> +24.8% vs last mo
+                                    </div>
+                                </div>
+                                <div class="bg-paper-card p-3 rounded-lg border border-cocoa shadow-retro-sm">
+                                    <div class="text-[10px] uppercase font-bold text-cocoa/70">Net Profit</div>
+                                    <div class="text-lg font-heading font-bold text-terracotta mt-0.5">Rp 42.180.000</div>
+                                    <div class="text-[10px] text-cocoa/70 font-semibold mt-1">Margin: 32.8%</div>
+                                </div>
+                                <div class="bg-paper-card p-3 rounded-lg border border-cocoa shadow-retro-sm">
+                                    <div class="text-[10px] uppercase font-bold text-cocoa/70">Active Bookings</div>
+                                    <div class="text-lg font-heading font-bold text-cocoa mt-0.5">84 Orders</div>
+                                    <div class="text-[10px] text-retro-green font-bold mt-1">100% Fulfilled</div>
+                                </div>
+                            </div>
+
+                            <!-- Mini Chart & Data Table Grid -->
+                            <div class="grid grid-cols-1 sm:grid-cols-5 gap-4">
+                                <!-- Simulated Chart -->
+                                <div class="sm:col-span-3 bg-paper-card p-3 rounded-lg border border-cocoa flex flex-col justify-between">
+                                    <div class="flex items-center justify-between text-xs font-bold text-cocoa mb-2">
+                                        <span>Performa Penjualan</span>
+                                        <span class="text-[10px] text-terracotta">Q3 Status</span>
+                                    </div>
+                                    <div class="h-28 flex items-end gap-2 px-2 pt-2 border-b border-cocoa/20">
+                                        <div class="w-1/6 bg-cocoa/30 rounded-t h-[40%] relative group"></div>
+                                        <div class="w-1/6 bg-cocoa/40 rounded-t h-[55%]"></div>
+                                        <div class="w-1/6 bg-cocoa/60 rounded-t h-[70%]"></div>
+                                        <div class="w-1/6 bg-terracotta/70 rounded-t h-[85%]"></div>
+                                        <div class="w-1/6 bg-terracotta rounded-t h-[100%] relative">
+                                            <span class="absolute -top-5 left-1/2 -translate-x-1/2 text-[9px] font-mono font-bold bg-cocoa text-paper px-1 rounded">MAX</span>
+                                        </div>
+                                    </div>
+                                    <div class="flex justify-between text-[9px] text-cocoa/60 font-mono mt-1 px-1">
+                                        <span>Mei</span><span>Jun</span><span>Jul</span><span>Agu</span><span>Sep</span>
+                                    </div>
+                                </div>
+
+                                <!-- Recent Activity List -->
+                                <div class="sm:col-span-2 bg-paper-card p-3 rounded-lg border border-cocoa text-xs space-y-2">
+                                    <div class="font-bold text-cocoa text-[11px] border-b border-cocoa/20 pb-1">Automated Actions</div>
+                                    <div class="space-y-1.5 text-[10px]">
+                                        <div class="p-1.5 bg-paper rounded border border-cocoa/10 flex items-center justify-between">
+                                            <span class="font-medium text-cocoa">F&B Daily Report</span>
+                                            <span class="text-[9px] text-retro-green font-bold">Auto Email</span>
+                                        </div>
+                                        <div class="p-1.5 bg-paper rounded border border-cocoa/10 flex items-center justify-between">
+                                            <span class="font-medium text-cocoa">Stock Alert (&lt;5)</span>
+                                            <span class="text-[9px] text-terracotta font-bold">Triggered</span>
+                                        </div>
+                                        <div class="p-1.5 bg-paper rounded border border-cocoa/10 flex items-center justify-between">
+                                            <span class="font-medium text-cocoa">Invoice Generation</span>
+                                            <span class="text-[9px] text-cocoa/60">Ready</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Sheet Tabs Footer -->
+                            <div class="flex items-center gap-1 text-[11px] font-medium pt-1">
+                                <span class="bg-terracotta text-paper px-3 py-1 rounded-t-md font-semibold border-t border-x border-cocoa">📊 Dashboard Utama</span>
+                                <span class="bg-paper-light text-cocoa px-3 py-1 rounded-t-md border-t border-x border-cocoa/30">💰 Financial Tracker</span>
+                                <span class="bg-paper-light text-cocoa px-3 py-1 rounded-t-md border-t border-x border-cocoa/30">📦 Inventory</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- WHY KEY.SHEET? SECTION -->
+    <section id="why-us" class="py-20 border-b-2 border-cocoa bg-paper-light relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-terracotta uppercase tracking-widest mb-2 font-heading">VALUE PROPOSITION</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold font-heading text-cocoa">
+                    Kenapa Harus Menggunakan Key.Sheet?
+                </h3>
+                <p class="text-cocoa/80 mt-3">
+                    Kami tidak hanya menjual file spreadsheet, kami membangun sistem kerja intuitif yang memperlancar operasional harian Anda.
+                </p>
+            </div>
+
+            <!-- 5 Grid Value Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="bg-paper-card p-6 rounded-2xl retro-border shadow-retro hover:-translate-y-1 transition-all duration-200">
+                    <div class="w-12 h-12 bg-terracotta text-paper rounded-xl retro-border flex items-center justify-center font-bold mb-4 shadow-retro-sm">
+                        <i data-lucide="sliders" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-heading text-cocoa mb-2">Dibuat Sesuai Kebutuhan</h4>
+                    <p class="text-cocoa/80 text-sm leading-relaxed">
+                        Bukan template generik. Setiap sistem dirancang kustom mengikuti alur kerja, istilah bisnis, dan kebutuhan spesifik Anda.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-paper-card p-6 rounded-2xl retro-border shadow-retro hover:-translate-y-1 transition-all duration-200">
+                    <div class="w-12 h-12 bg-retro-green text-paper rounded-xl retro-border flex items-center justify-center font-bold mb-4 shadow-retro-sm">
+                        <i data-lucide="sparkles" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-heading text-cocoa mb-2">Mudah Digunakan</h4>
+                    <p class="text-cocoa/80 text-sm leading-relaxed">
+                        Sistem dibuat agar tetap ramah pengguna (*user-friendly*) tanpa Anda harus paham rumus formula yang membingungkan.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-paper-card p-6 rounded-2xl retro-border shadow-retro hover:-translate-y-1 transition-all duration-200">
+                    <div class="w-12 h-12 bg-cocoa text-paper rounded-xl retro-border flex items-center justify-center font-bold mb-4 shadow-retro-sm">
+                        <i data-lucide="clock" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-heading text-cocoa mb-2">Menghemat Waktu</h4>
+                    <p class="text-cocoa/80 text-sm leading-relaxed">
+                        Kurangi pekerjaan input manual yang berulang dengan formula otomatis, *automation*, dan *workflow* yang jauh lebih efisien.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-paper-card p-6 rounded-2xl retro-border shadow-retro hover:-translate-y-1 transition-all duration-200">
+                    <div class="w-12 h-12 bg-terracotta text-paper rounded-xl retro-border flex items-center justify-center font-bold mb-4 shadow-retro-sm">
+                        <i data-lucide="layers" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-heading text-cocoa mb-2">Tanpa Software Tambahan</h4>
+                    <p class="text-cocoa/80 text-sm leading-relaxed">
+                        Manfaatkan Google Sheets sebagai platform gratis yang sudah familiar, ringan, mudah diakses di HP/Laptop, tanpa biaya bulanan.
+                    </p>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="bg-paper-card p-6 rounded-2xl retro-border shadow-retro hover:-translate-y-1 transition-all duration-200 md:col-span-2 lg:col-span-1">
+                    <div class="w-12 h-12 bg-retro-green text-paper rounded-xl retro-border flex items-center justify-center font-bold mb-4 shadow-retro-sm">
+                        <i data-lucide="trending-up" class="w-6 h-6"></i>
+                    </div>
+                    <h4 class="text-xl font-bold font-heading text-cocoa mb-2">Bisa Dikembangkan</h4>
+                    <p class="text-cocoa/80 text-sm leading-relaxed">
+                        Sistem modular yang fleksibel dan dapat dengan mudah ditambahkan fitur baru saat skala bisnis Anda tumbuh semakin besar.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- TARGET CUSTOMER SECTION -->
+    <section class="py-16 border-b-2 border-cocoa bg-paper">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs font-bold text-terracotta uppercase tracking-widest mb-2 font-heading">TARGET CUSTOMER</h2>
+                    <h3 class="text-3xl font-bold font-heading text-cocoa">Untuk Siapa Key.Sheet Hadir?</h3>
+                </div>
+                <p class="text-cocoa/80 text-sm max-w-md mt-2 md:mt-0">
+                    Solusi terstruktur untuk berbagai skala usaha dan kebutuhan personal.
+                </p>
+            </div>
+
+            <!-- Horizontal Cards / Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                
+                <div class="bg-paper-card p-5 rounded-xl border-2 border-cocoa shadow-retro-sm text-center group hover:bg-terracotta hover:text-paper transition-all cursor-default">
+                    <div class="w-10 h-10 mx-auto mb-3 bg-paper rounded-full border border-cocoa flex items-center justify-center group-hover:bg-paper-light group-hover:text-cocoa transition-colors">
+                        <i data-lucide="store" class="w-5 h-5 text-cocoa"></i>
+                    </div>
+                    <h4 class="font-bold font-heading text-base mb-1">UMKM</h4>
+                    <p class="text-xs opacity-90 leading-tight">Merapikan operasional & pencatatan tanpa sistem rumit.</p>
+                </div>
+
+                <div class="bg-paper-card p-5 rounded-xl border-2 border-cocoa shadow-retro-sm text-center group hover:bg-terracotta hover:text-paper transition-all cursor-default">
+                    <div class="w-10 h-10 mx-auto mb-3 bg-paper rounded-full border border-cocoa flex items-center justify-center group-hover:bg-paper-light group-hover:text-cocoa transition-colors">
+                        <i data-lucide="user-check" class="w-5 h-5 text-cocoa"></i>
+                    </div>
+                    <h4 class="font-bold font-heading text-base mb-1">Freelancer</h4>
+                    <p class="text-xs opacity-90 leading-tight">Kelola proyek, klien, keuangan, & deadline satu tempat.</p>
+                </div>
+
+                <div class="bg-paper-card p-5 rounded-xl border-2 border-cocoa shadow-retro-sm text-center group hover:bg-terracotta hover:text-paper transition-all cursor-default">
+                    <div class="w-10 h-10 mx-auto mb-3 bg-paper rounded-full border border-cocoa flex items-center justify-center group-hover:bg-paper-light group-hover:text-cocoa transition-colors">
+                        <i data-lucide="rocket" class="w-5 h-5 text-cocoa"></i>
+                    </div>
+                    <h4 class="font-bold font-heading text-base mb-1">Startup</h4>
+                    <p class="text-xs opacity-90 leading-tight">Sistem internal yang fleksibel & mudah dikembangkan.</p>
+                </div>
+
+                <div class="bg-paper-card p-5 rounded-xl border-2 border-cocoa shadow-retro-sm text-center group hover:bg-terracotta hover:text-paper transition-all cursor-default">
+                    <div class="w-10 h-10 mx-auto mb-3 bg-paper rounded-full border border-cocoa flex items-center justify-center group-hover:bg-paper-light group-hover:text-cocoa transition-colors">
+                        <i data-lucide="building-2" class="w-5 h-5 text-cocoa"></i>
+                    </div>
+                    <h4 class="font-bold font-heading text-base mb-1">Perusahaan</h4>
+                    <p class="text-xs opacity-90 leading-tight">Otomatisasi proses & pelaporan yang masih manual.</p>
+                </div>
+
+                <div class="bg-paper-card p-5 rounded-xl border-2 border-cocoa shadow-retro-sm text-center group hover:bg-terracotta hover:text-paper transition-all cursor-default col-span-2 sm:col-span-1">
+                    <div class="w-10 h-10 mx-auto mb-3 bg-paper rounded-full border border-cocoa flex items-center justify-center group-hover:bg-paper-light group-hover:text-cocoa transition-colors">
+                        <i data-lucide="wallet" class="w-5 h-5 text-cocoa"></i>
+                    </div>
+                    <h4 class="font-bold font-heading text-base mb-1">Personal</h4>
+                    <p class="text-xs opacity-90 leading-tight">Kelola keuangan pribadi, tabungan, & tugas harian.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="py-20 border-b-2 border-cocoa bg-paper-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-terracotta uppercase tracking-widest mb-2 font-heading">OUR SERVICES</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold font-heading text-cocoa">Layanan Utama Key.Sheet</h3>
+                <p class="text-cocoa/80 mt-2">Dari pembuatan sistem baru, pengembangan visualisasi, hingga otomatisasi tingkat lanjut.</p>
+            </div>
+
+            <!-- Service Cards Stack / Grid -->
+            <div class="space-y-8">
+                
+                <!-- Service 01 -->
+                <div class="bg-paper p-6 sm:p-8 rounded-2xl retro-border shadow-retro flex flex-col md:flex-row gap-6 items-start justify-between">
+                    <div class="space-y-4 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold font-mono text-terracotta bg-paper-card px-3 py-1 rounded border border-cocoa/30">
+                            SERVICE 01
+                        </div>
+                        <h4 class="text-2xl font-bold font-heading text-cocoa">Custom Google Sheets</h4>
+                        <p class="text-cocoa/80 text-sm leading-relaxed">
+                            Ceritakan apa yang Anda butuhkan, biarkan kami mengubahnya menjadi sistem Google Sheets yang bekerja persis sesuai alur bisnis Anda.
+                        </p>
+                        <!-- Examples Tag Cloud -->
+                        <div>
+                            <span class="text-xs font-bold text-cocoa/60 uppercase block mb-2">Contoh Sistem yang Sering Dibuat:</span>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Financial Tracker</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Budgeting</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Inventory / Stok</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Sales Tracker</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">CRM Client</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Project Management</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Absensi & Payroll</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">F&B Report</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-auto flex md:flex-col justify-end">
+                        <a href="https://wa.me/6285871171523?text=Halo%20Key.Sheet,%20saya%20tertarik%20dengan%20layanan%2001%20Custom%20Google%20Sheets" 
+                           target="_blank" 
+                           class="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-terracotta text-paper px-6 py-3 rounded-xl retro-border shadow-retro-sm font-heading font-bold text-sm hover:bg-terracotta-dark transition-all">
+                            Buat Custom Sheet <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 02 -->
+                <div class="bg-paper p-6 sm:p-8 rounded-2xl retro-border shadow-retro flex flex-col md:flex-row gap-6 items-start justify-between">
+                    <div class="space-y-4 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold font-mono text-terracotta bg-paper-card px-3 py-1 rounded border border-cocoa/30">
+                            SERVICE 02
+                        </div>
+                        <h4 class="text-2xl font-bold font-heading text-cocoa">Dashboard & Data Visualization</h4>
+                        <p class="text-cocoa/80 text-sm leading-relaxed">
+                            Data yang menumpuk sering kali sulit dipahami. Kami mengubahnya menjadi dashboard visual yang ringkas, interaktif, dan langsung menyajikan poin penting kondisi bisnis Anda.
+                        </p>
+                        <div>
+                            <span class="text-xs font-bold text-cocoa/60 uppercase block mb-2">Fitur Unggulan:</span>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">KPI Scorecards</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Interactive Charts</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Dynamic Filter</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Monthly & Annual Comparison</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-auto flex md:flex-col justify-end">
+                        <a href="https://wa.me/6285871171523?text=Halo%20Key.Sheet,%20saya%20tertarik%20dengan%20layanan%2002%20Dashboard%20%26%20Data%20Visualization" 
+                           target="_blank" 
+                           class="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-terracotta text-paper px-6 py-3 rounded-xl retro-border shadow-retro-sm font-heading font-bold text-sm hover:bg-terracotta-dark transition-all">
+                            Buat Dashboard <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Service 03 -->
+                <div class="bg-paper p-6 sm:p-8 rounded-2xl retro-border shadow-retro flex flex-col md:flex-row gap-6 items-start justify-between">
+                    <div class="space-y-4 max-w-2xl">
+                        <div class="inline-flex items-center gap-2 text-xs font-bold font-mono text-terracotta bg-paper-card px-3 py-1 rounded border border-cocoa/30">
+                            SERVICE 03
+                        </div>
+                        <h4 class="text-2xl font-bold font-heading text-cocoa">Google Sheets Automation</h4>
+                        <p class="text-cocoa/80 text-sm leading-relaxed">
+                            Pekerjaan berulang? Biarkan spreadsheet yang mengerjakannya. Kami bantu mengotomatiskan proses manual agar pekerjaan lebih cepat, konsisten, dan bebas dari *human error*.
+                        </p>
+                        <div>
+                            <span class="text-xs font-bold text-cocoa/60 uppercase block mb-2">Automation yang Disediakan:</span>
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Automatic Calculations</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Auto-Generated Reports</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Email Notifications</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Document Generation (PDF/Invoice)</span>
+                                <span class="bg-paper-card px-2.5 py-1 rounded border border-cocoa/30">Form → Sheet Integration</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-auto flex md:flex-col justify-end">
+                        <a href="https://wa.me/6285871171523?text=Halo%20Key.Sheet,%20saya%20tertarik%20dengan%20layanan%2003%20Google%20Sheets%20Automation" 
+                           target="_blank" 
+                           class="w-full md:w-auto inline-flex items-center justify-center gap-2 bg-terracotta text-paper px-6 py-3 rounded-xl retro-border shadow-retro-sm font-heading font-bold text-sm hover:bg-terracotta-dark transition-all">
+                            Konsultasi Automation <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Grid 2 Col for 04 & 05 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    
+                    <!-- Service 04 -->
+                    <div class="bg-paper p-6 sm:p-8 rounded-2xl retro-border shadow-retro flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="inline-flex items-center gap-2 text-xs font-bold font-mono text-terracotta bg-paper-card px-3 py-1 rounded border border-cocoa/30">
+                                SERVICE 04
+                            </div>
+                            <h4 class="text-xl font-bold font-heading text-cocoa">Spreadsheet Optimization</h4>
+                            <p class="text-cocoa/80 text-sm leading-relaxed">
+                                Punya spreadsheet tapi terasa lemot, rumus sering error, atau terlalu rumit? Kami rapikan dan tingkatkan performanya (*Spreadsheet Makeover*).
+                            </p>
+                            <ul class="text-xs text-cocoa/80 space-y-1.5 pt-2">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> Redesign Layout & UX</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> Formula Improvement & Error Fixing</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> Restrukturisasi Data & Performance Boost</li>
+                            </ul>
+                        </div>
+                        <a href="https://wa.me/6285871171523?text=Halo%20Key.Sheet,%20saya%20ingin%20Upgrade/Optimize%20Spreadsheet%20saya" 
+                           target="_blank" 
+                           class="inline-flex items-center justify-center gap-2 bg-paper-card text-cocoa px-5 py-2.5 rounded-xl retro-border shadow-retro-sm font-heading font-bold text-sm hover:bg-paper-light transition-all">
+                            Upgrade Spreadsheet Saya <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                    <!-- Service 05 -->
+                    <div class="bg-paper p-6 sm:p-8 rounded-2xl retro-border shadow-retro flex flex-col justify-between space-y-4">
+                        <div class="space-y-3">
+                            <div class="inline-flex items-center gap-2 text-xs font-bold font-mono text-terracotta bg-paper-card px-3 py-1 rounded border border-cocoa/30">
+                                SERVICE 05
+                            </div>
+                            <h4 class="text-xl font-bold font-heading text-cocoa">Template Development</h4>
+                            <p class="text-cocoa/80 text-sm leading-relaxed">
+                                Template siap pakai untuk kebutuhan harian, personal, sekolah, maupun bisnis. Tanpa biaya langganan bulanan.
+                            </p>
+                            <ul class="text-xs text-cocoa/80 space-y-1.5 pt-2">
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> Sekali Bayar, Milik Selamanya</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> Dilengkapi Petunjuk Penggunaan</li>
+                                <li class="flex items-center gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> Paket E-Book & Modul Google Sheets</li>
+                            </ul>
+                        </div>
+                        <a href="#templates" 
+                           class="inline-flex items-center justify-center gap-2 bg-paper-card text-cocoa px-5 py-2.5 rounded-xl retro-border shadow-retro-sm font-heading font-bold text-sm hover:bg-paper-light transition-all">
+                            Lihat Katalog Template <i data-lucide="arrow-down" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SELECTED PORTFOLIO SECTION -->
+    <section id="portfolio" class="py-20 border-b-2 border-cocoa bg-paper">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+                <div>
+                    <h2 class="text-xs font-bold text-terracotta uppercase tracking-widest mb-2 font-heading">SELECTED PORTFOLIO</h2>
+                    <h3 class="text-3xl sm:text-4xl font-bold font-heading text-cocoa">Hasil Karya & Project Terkait</h3>
+                </div>
+                
+                <!-- Category Filters -->
+                <div class="flex flex-wrap gap-2 mt-4 md:mt-0 font-heading text-xs">
+                    <button onclick="filterPortfolio('all')" class="port-filter-btn active bg-cocoa text-paper px-4 py-2 rounded-lg retro-border">Semua</button>
+                    <button onclick="filterPortfolio('custom')" class="port-filter-btn bg-paper-card text-cocoa px-4 py-2 rounded-lg border border-cocoa hover:bg-paper-light">Custom Sheets</button>
+                    <button onclick="filterPortfolio('dashboard')" class="port-filter-btn bg-paper-card text-cocoa px-4 py-2 rounded-lg border border-cocoa hover:bg-paper-light">Dashboard</button>
+                    <button onclick="filterPortfolio('automation')" class="port-filter-btn bg-paper-card text-cocoa px-4 py-2 rounded-lg border border-cocoa hover:bg-paper-light">Automation</button>
+                </div>
+            </div>
+
+            <!-- Portfolio Cards Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="portfolio-grid">
+                
+                <!-- Item 1 -->
+                <div class="port-card bg-paper-card rounded-2xl retro-border shadow-retro overflow-hidden flex flex-col justify-between" data-category="custom">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-terracotta/10 text-terracotta px-2.5 py-1 rounded border border-terracotta/30">Custom Google Sheets</span>
+                            <span class="text-xs font-mono text-cocoa/60">F&B Sector</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-heading text-cocoa">Custom Template Keuangan F&B</h4>
+                        <div class="text-xs text-cocoa/80 space-y-2">
+                            <p><strong class="text-cocoa">Masalah:</strong> Pemilik bisnis butuh sistem sederhana untuk mencatat transaksi, pengeluaran & profit F&B.</p>
+                            <p><strong class="text-cocoa">Solusi:</strong> Sistem keuangan terpadu yang menggabungkan transaksi, profit, & rekap laporan otomatis.</p>
+                        </div>
+                        <div class="pt-2 border-t border-cocoa/10">
+                            <span class="text-[11px] font-bold text-cocoa block mb-1">Fitur Utama:</span>
+                            <p class="text-xs text-cocoa/70 line-clamp-2">Pencatatan transaksi, Rekap kas, 10 Menu terpopuler, Dynamic menu price update, Detail jam makan pengunjung.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openPortModal(1)" class="w-full text-center py-2.5 bg-paper rounded-xl border border-cocoa text-xs font-bold font-heading text-cocoa hover:bg-terracotta hover:text-paper hover:border-cocoa transition-all">
+                            Lihat Detail Project →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 2 -->
+                <div class="port-card bg-paper-card rounded-2xl retro-border shadow-retro overflow-hidden flex flex-col justify-between" data-category="custom">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-terracotta/10 text-terracotta px-2.5 py-1 rounded border border-terracotta/30">Custom Google Sheets</span>
+                            <span class="text-xs font-mono text-cocoa/60">Rental & Stok</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-heading text-cocoa">Custom Data Booking & Stok Barang</h4>
+                        <div class="text-xs text-cocoa/80 space-y-2">
+                            <p><strong class="text-cocoa">Masalah:</strong> Sulit mencatat barang sewaan dan memantau stok barang yang sedang tersedia.</p>
+                            <p><strong class="text-cocoa">Solusi:</strong> Sistem terpusat kelola booking, ketersediaan barang, & kalender otomatisasi jadwal sewa/kembali.</p>
+                        </div>
+                        <div class="pt-2 border-t border-cocoa/10">
+                            <span class="text-[11px] font-bold text-cocoa block mb-1">Fitur Utama:</span>
+                            <p class="text-xs text-cocoa/70 line-clamp-2">Pencatatan penyewa, Data barang, Kalender otomatisasi jam sewa/kembali, Auto Stock Level.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openPortModal(2)" class="w-full text-center py-2.5 bg-paper rounded-xl border border-cocoa text-xs font-bold font-heading text-cocoa hover:bg-terracotta hover:text-paper hover:border-cocoa transition-all">
+                            Lihat Detail Project →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 3 -->
+                <div class="port-card bg-paper-card rounded-2xl retro-border shadow-retro overflow-hidden flex flex-col justify-between" data-category="custom">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-terracotta/10 text-terracotta px-2.5 py-1 rounded border border-terracotta/30">Custom Google Sheets</span>
+                            <span class="text-xs font-mono text-cocoa/60">Tourism & Ticketing</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-heading text-cocoa">Arus Kas, Keuangan & Ticketing Wisata</h4>
+                        <div class="text-xs text-cocoa/80 space-y-2">
+                            <p><strong class="text-cocoa">Masalah:</strong> Pengelola wisata bingung menghitung jumlah wisatawan & kategori tiket yang dibeli.</p>
+                            <p><strong class="text-cocoa">Solusi:</strong> Sistem pencatatan wisatawan terfilter per kategori tiket terintegrasi kas.</p>
+                        </div>
+                        <div class="pt-2 border-t border-cocoa/10">
+                            <span class="text-[11px] font-bold text-cocoa block mb-1">Fitur Utama:</span>
+                            <p class="text-xs text-cocoa/70 line-clamp-2">Pencatatan wisatawan, Kas masukan/keluaran, Rincian pendapatan tiket, Filter kategori wisatawan.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openPortModal(3)" class="w-full text-center py-2.5 bg-paper rounded-xl border border-cocoa text-xs font-bold font-heading text-cocoa hover:bg-terracotta hover:text-paper hover:border-cocoa transition-all">
+                            Lihat Detail Project →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 4 -->
+                <div class="port-card bg-paper-card rounded-2xl retro-border shadow-retro overflow-hidden flex flex-col justify-between" data-category="custom">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-terracotta/10 text-terracotta px-2.5 py-1 rounded border border-terracotta/30">Custom Google Sheets</span>
+                            <span class="text-xs font-mono text-cocoa/60">Edukasi / Sekolah</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-heading text-cocoa">Custom Template Absensi Siswa</h4>
+                        <div class="text-xs text-cocoa/80 space-y-2">
+                            <p><strong class="text-cocoa">Masalah:</strong> Rekapitulasi absensi manual memakan waktu lama & rawan kesalahan.</p>
+                            <p><strong class="text-cocoa">Solusi:</strong> Sistem rekap absensi otomatis per bulan, semester, & tahunan dengan kalender merah otomatis.</p>
+                        </div>
+                        <div class="pt-2 border-t border-cocoa/10">
+                            <span class="text-[11px] font-bold text-cocoa block mb-1">Fitur Utama:</span>
+                            <p class="text-xs text-cocoa/70 line-clamp-2">Dropdown keterangan, 1 Sheet = 1 Bulan, Auto weekend/holiday highlight, Auto Student Count.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openPortModal(4)" class="w-full text-center py-2.5 bg-paper rounded-xl border border-cocoa text-xs font-bold font-heading text-cocoa hover:bg-terracotta hover:text-paper hover:border-cocoa transition-all">
+                            Lihat Detail Project →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 5 -->
+                <div class="port-card bg-paper-card rounded-2xl retro-border shadow-retro overflow-hidden flex flex-col justify-between" data-category="custom">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-terracotta/10 text-terracotta px-2.5 py-1 rounded border border-terracotta/30">Custom Google Sheets</span>
+                            <span class="text-xs font-mono text-cocoa/60">B2B Finance</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-heading text-cocoa">Hutang Piutang Perusahaan</h4>
+                        <div class="text-xs text-cocoa/80 space-y-2">
+                            <p><strong class="text-cocoa">Masalah:</strong> Sulit memantau perusahaan mana yang masih berhutang dan mana yang sudah lunas.</p>
+                            <p><strong class="text-cocoa">Solusi:</strong> Struktur 1 tabel 1 perusahaan dengan filter status pelunasan otomatis.</p>
+                        </div>
+                        <div class="pt-2 border-t border-cocoa/10">
+                            <span class="text-[11px] font-bold text-cocoa block mb-1">Fitur Utama:</span>
+                            <p class="text-xs text-cocoa/70 line-clamp-2">Hitung sisa hutang otomatis, Minimize tagihan lunas, Tracking jatuh tempo, Dashboard status.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openPortModal(5)" class="w-full text-center py-2.5 bg-paper rounded-xl border border-cocoa text-xs font-bold font-heading text-cocoa hover:bg-terracotta hover:text-paper hover:border-cocoa transition-all">
+                            Lihat Detail Project →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 6 -->
+                <div class="port-card bg-paper-card rounded-2xl retro-border shadow-retro overflow-hidden flex flex-col justify-between" data-category="dashboard">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-retro-green/20 text-retro-green px-2.5 py-1 rounded border border-retro-green/30">Dashboard</span>
+                            <span class="text-xs font-mono text-cocoa/60">Visualization</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-heading text-cocoa">Dashboard Visual Laporan F&B</h4>
+                        <div class="text-xs text-cocoa/80 space-y-2">
+                            <p><strong class="text-cocoa">Masalah:</strong> Data transaksi menumpuk dan ribet jika dibaca dalam bentuk tabel mentah.</p>
+                            <p><strong class="text-cocoa">Solusi:</strong> Visualisasi KPI scorecards, tren grafik pendapatan/pengeluaran & perbandingan periode.</p>
+                        </div>
+                        <div class="pt-2 border-t border-cocoa/10">
+                            <span class="text-[11px] font-bold text-cocoa block mb-1">Fitur Utama:</span>
+                            <p class="text-xs text-cocoa/70 line-clamp-2">KPI Scorecard, Comparison vs last month, Profit/Expense Charts, Interactive Date Filter.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openPortModal(6)" class="w-full text-center py-2.5 bg-paper rounded-xl border border-cocoa text-xs font-bold font-heading text-cocoa hover:bg-terracotta hover:text-paper hover:border-cocoa transition-all">
+                            Lihat Detail Project →
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Item 7 -->
+                <div class="port-card bg-paper-card rounded-2xl retro-border shadow-retro overflow-hidden flex flex-col justify-between" data-category="automation">
+                    <div class="p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-[10px] font-bold uppercase tracking-wider bg-cocoa/10 text-cocoa px-2.5 py-1 rounded border border-cocoa/30">Automation</span>
+                            <span class="text-xs font-mono text-cocoa/60">Apps Script</span>
+                        </div>
+                        <h4 class="text-xl font-bold font-heading text-cocoa">Email Notification Trigger</h4>
+                        <div class="text-xs text-cocoa/80 space-y-2">
+                            <p><strong class="text-cocoa">Masalah:</strong> Harus sering cek tabel manual untuk laporan harian & notifikasi penting.</p>
+                            <p><strong class="text-cocoa">Solusi:</strong> Pemicu (*trigger*) otomatis yang mengirimkan notifikasi ringkasan langsung ke email.</p>
+                        </div>
+                        <div class="pt-2 border-t border-cocoa/10">
+                            <span class="text-[11px] font-bold text-cocoa block mb-1">Fitur Utama:</span>
+                            <p class="text-xs text-cocoa/70 line-clamp-2">Scheduled automated email, Conditional trigger, Custom email template HTML.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0">
+                        <button onclick="openPortModal(7)" class="w-full text-center py-2.5 bg-paper rounded-xl border border-cocoa text-xs font-bold font-heading text-cocoa hover:bg-terracotta hover:text-paper hover:border-cocoa transition-all">
+                            Lihat Detail Project →
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ORDER PROCESS SECTION -->
+    <section class="py-20 border-b-2 border-cocoa bg-paper-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-terracotta uppercase tracking-widest mb-2 font-heading">HOW IT WORKS</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold font-heading text-cocoa">Dari Ide Menjadi Sistem Kerja</h3>
+                <p class="text-cocoa/80 mt-2">6 langkah sederhana mewujudkan Google Sheets impian bisnis Anda.</p>
+            </div>
+
+            <!-- Steps Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-4">
+                
+                <div class="bg-paper p-5 rounded-xl border-2 border-cocoa shadow-retro-sm relative">
+                    <div class="text-2xl font-bold font-heading text-terracotta mb-2">01</div>
+                    <h4 class="font-bold font-heading text-base text-cocoa mb-1">CERITAKAN</h4>
+                    <p class="text-xs text-cocoa/80">Beritahu kami apa yang ingin Anda buat atau kendala yang ingin diselesaikan.</p>
+                </div>
+
+                <div class="bg-paper p-5 rounded-xl border-2 border-cocoa shadow-retro-sm relative">
+                    <div class="text-2xl font-bold font-heading text-terracotta mb-2">02</div>
+                    <h4 class="font-bold font-heading text-base text-cocoa mb-1">PAHAMI</h4>
+                    <p class="text-xs text-cocoa/80">Kami mempelajari kebutuhan spesifik dan alur kerja bisnis Anda.</p>
+                </div>
+
+                <div class="bg-paper p-5 rounded-xl border-2 border-cocoa shadow-retro-sm relative">
+                    <div class="text-2xl font-bold font-heading text-terracotta mb-2">03</div>
+                    <h4 class="font-bold font-heading text-base text-cocoa mb-1">RANCANG</h4>
+                    <p class="text-xs text-cocoa/80">Kami menentukan alur fitur, struktur data, dan ruang lingkup project.</p>
+                </div>
+
+                <div class="bg-paper p-5 rounded-xl border-2 border-cocoa shadow-retro-sm relative">
+                    <div class="text-2xl font-bold font-heading text-terracotta mb-2">04</div>
+                    <h4 class="font-bold font-heading text-base text-cocoa mb-1">BANGUN</h4>
+                    <p class="text-xs text-cocoa/80">Kami mulai mengembangkan Google Sheets sesuai rancangan awal.</p>
+                </div>
+
+                <div class="bg-paper p-5 rounded-xl border-2 border-cocoa shadow-retro-sm relative">
+                    <div class="text-2xl font-bold font-heading text-terracotta mb-2">05</div>
+                    <h4 class="font-bold font-heading text-base text-cocoa mb-1">SEMPURNAKAN</h4>
+                    <p class="text-xs text-cocoa/80">Review, *feedback*, dan penyesuaian dilakukan sebelum finalisasi.</p>
+                </div>
+
+                <div class="bg-paper p-5 rounded-xl border-2 border-cocoa shadow-retro-sm relative bg-terracotta/10">
+                    <div class="text-2xl font-bold font-heading text-terracotta mb-2">06</div>
+                    <h4 class="font-bold font-heading text-base text-cocoa mb-1">GUNAKAN</h4>
+                    <p class="text-xs text-cocoa/80">Sistem siap digunakan untuk memperlancar pekerjaan harian Anda.</p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section id="pricing" class="py-20 border-b-2 border-cocoa bg-paper">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-terracotta uppercase tracking-widest mb-2 font-heading">PRICING PLANS</h2>
+                <h3 class="text-3xl sm:text-4xl font-bold font-heading text-cocoa">Investasi Transparan untuk Bisnis</h3>
+                <p class="text-cocoa/80 mt-2">Pilih paket pengembangan custom yang sesuai skala dan kebutuhan Anda.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Starter Tier -->
+                <div class="bg-paper-card rounded-2xl retro-border shadow-retro p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-cocoa/70 mb-2 font-heading">STARTER</div>
+                        <div class="flex items-baseline gap-1 mb-4">
+                            <span class="text-sm font-bold text-cocoa">Mulai</span>
+                            <span class="text-3xl font-bold font-heading text-cocoa">Rp 150.000</span>
+                        </div>
+                        <p class="text-xs text-cocoa/80 mb-6 pb-6 border-b border-cocoa/20">Untuk kebutuhan spreadsheet sederhana & efisien.</p>
+                        
+                        <ul class="text-xs space-y-3 text-cocoa/90 mb-8">
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Custom Google Sheets</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Formula & Formula Dasar</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Visual Formatting Rapi</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Panduan Penggunaan Singkat</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/6285871171523?text=Halo%20Key.Sheet,%20saya%20berminat%20dengan%20Paket%20STARTER%20(Mulai%20Rp150.000)" 
+                       target="_blank" 
+                       class="w-full text-center py-3 bg-paper rounded-xl retro-border shadow-retro-sm font-heading font-bold text-sm text-cocoa hover:bg-terracotta hover:text-paper transition-all">
+                        Mulai Project
+                    </a>
+                </div>
+
+                <!-- Business Tier (Featured) -->
+                <div class="bg-paper-light rounded-2xl retro-border shadow-retro-lg p-8 flex flex-col justify-between relative border-2 border-terracotta">
+                    <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-terracotta text-paper px-4 py-1 rounded-full text-[10px] font-bold uppercase font-heading tracking-wider retro-border">
+                        MOST POPULAR
+                    </div>
+
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-terracotta mb-2 font-heading mt-1">BUSINESS</div>
+                        <div class="flex items-baseline gap-1 mb-4">
+                            <span class="text-sm font-bold text-cocoa">Mulai</span>
+                            <span class="text-3xl font-bold font-heading text-terracotta">Rp 350.000</span>
+                        </div>
+                        <p class="text-xs text-cocoa/80 mb-6 pb-6 border-b border-cocoa/20">Untuk kebutuhan bisnis yang lebih lengkap & otomatis.</p>
+                        
+                        <ul class="text-xs space-y-3 text-cocoa/90 mb-8">
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Custom Google Sheets Lengkap</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Interactive Dashboard & Charts</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Advanced Formula & Otomatisasi</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Data Validation & Error Handling</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Revisi Penyesuaian Fitur</li>
+                        </ul>
+                    </div>
+
+                    <a href="https://wa.me/6285871171523?text=Halo%20Key.Sheet,%20saya%20berminat%20dengan%20Paket%20BUSINESS%20(Mulai%20Rp350.000)" 
+                       target="_blank" 
+                       class="w-full text-center py-3 bg-terracotta text-paper rounded-xl retro-border shadow-retro-sm font-heading font-bold text-sm hover:bg-terracotta-dark transition-all">
+                        Mulai Project Business
+                    </a>
+                </div>
+
+                <!-- Custom Tier -->
+                <div class="bg-paper-card rounded-2xl retro-border shadow-retro p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold uppercase tracking-wider text-cocoa/70 mb-2 font-heading">CUSTOM</div>
+                        <div class="flex items-baseline gap-1 mb-4">
+                            <span class="text-3xl font-bold font-heading text-cocoa">Sesuai Scope</span>
+                        </div>
+                        <p class="text-xs text-cocoa/80 mb-6 pb-6 border-b border-cocoa/20">Untuk kebutuhan kompleks & kustomisasi tingkat lanjut.</p>
+                        
+                        <ul class="text-xs space-y-3 text-cocoa/90 mb-8">
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Custom Workflow Kompleks</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Google Apps Script Automation</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Email Notification Automated</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Auto Invoice / PDF Generation</li>
+                            <li class="flex items-center gap-2.5"><i data-lucide="check" class="w-4 h-4 text-terracotta"></i> Sesi Saling Konsultasi Langsung</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="openBriefModal()" 
+                       class="w-full text-center py-3 bg-cocoa text-paper rounded-xl retro-border shadow-retro-sm font-heading font-bold text-sm hover:bg-cocoa-dark transition-all">
+                        Konsultasikan Project
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- TEMPLATES & DIGITAL PRODUCTS SECTION -->
+    <section id="templates" class="py-20 border-b-2 border-cocoa bg-paper-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-xs font-bold text-terracotta uppercase tracking-widest mb-2 font-heading">DIGITAL PRODUCTS</h2>
+                    <h3 class="text-3xl sm:text-4xl font-bold font-heading text-cocoa">Template Ready-to-Use & Modul</h3>
+                </div>
+                <p class="text-cocoa/80 text-sm max-w-md mt-2 md:mt-0">
+                    Bisa langsung dipakai tanpa langganan. Pilih template yang sesuai kebutuhan Anda.
+                </p>
+            </div>
+
+            <!-- Products Grid by Categories -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Category 1: Personal -->
+                <div class="bg-paper p-6 rounded-2xl retro-border shadow-retro space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-cocoa/20">
+                        <h4 class="font-heading font-bold text-lg text-cocoa flex items-center gap-2">
+                            <i data-lucide="user" class="w-5 h-5 text-terracotta"></i> Template Personal
+                        </h4>
+                        <span class="text-[10px] font-bold bg-terracotta/20 text-terracotta px-2 py-0.5 rounded">SIAP PAKAI</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-paper-card rounded-xl border border-cocoa/30 text-xs">
+                            <div>
+                                <div class="font-bold text-cocoa">Budget Planner</div>
+                                <div class="text-[10px] text-cocoa/70">Kelola keuangan bulanan</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold text-terracotta font-heading">Rp 20.000</div>
+                                <a href="https://lynk.id/mrkey.sheet/kkr2l2471lr4" target="_blank" class="text-[10px] underline font-bold text-cocoa hover:text-terracotta">Beli Template →</a>
+        </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-paper-card rounded-xl border border-cocoa/30 text-xs">
+                            <div>
+                                <div class="font-bold text-cocoa">Dynamic Task & Deadline</div>
+                                <div class="text-[10px] text-cocoa/70">Monitoring tugas & tenggat</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold text-terracotta font-heading">Rp 25.000</div>
+                                <a href="https://lynk.id/mrkey.sheet/km28142z2k29" target="_blank" class="text-[10px] underline font-bold text-cocoa hover:text-terracotta">Beli Template →</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-paper-card rounded-xl border border-cocoa/30 text-xs">
+                            <div>
+                                <div class="font-bold text-cocoa">Catatan Hutang Pribadi</div>
+                                <div class="text-[10px] text-cocoa/70">Pencatatan piutang teratur</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold text-terracotta font-heading">Rp 30.000</div>
+                               <a href="https://lynk.id/mrkey.sheet/007onnexglre" target="_blank" class="text-[10px] underline font-bold text-cocoa hover:text-terracotta">Beli Template →</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-paper-card rounded-xl border border-cocoa/30 text-xs">
+                            <div>
+                                <div class="font-bold text-cocoa">Couple Saving Planner</div>
+                                <div class="text-[10px] text-cocoa/70">Tabungan bersama pasangan</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold text-terracotta font-heading">Rp 20.000</div>
+                                <a href="https://lynk.id/mrkey.sheet/3z8o9elxjox3" target="_blank" class="text-[10px] underline font-bold text-cocoa hover:text-terracotta">Beli Template →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Siswa / Edukasi -->
+                <div class="bg-paper p-6 rounded-2xl retro-border shadow-retro space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-cocoa/20">
+                        <h4 class="font-heading font-bold text-lg text-cocoa flex items-center gap-2">
+                            <i data-lucide="graduation-cap" class="w-5 h-5 text-terracotta"></i> Template Edukasi
+                        </h4>
+                        <span class="text-[10px] font-bold bg-terracotta/20 text-terracotta px-2 py-0.5 rounded">GURU & WALI KELAS</span>
+                    </div>
+
+                    <div class="space-y-3">
+                        <div class="flex items-center justify-between p-3 bg-paper-card rounded-xl border border-cocoa/30 text-xs">
+                            <div>
+                                <div class="font-bold text-cocoa">Absensi Siswa — Tahunan</div>
+                                <div class="text-[10px] text-cocoa/70">Rekap kehadiran 1 tahun penuh</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold text-terracotta font-heading">Rp 35.000</div>
+                                 <a href="https://lynk.id/mrkey.sheet/9dp5y5g8m2jy" target="_blank" class="text-[10px] underline font-bold text-cocoa hover:text-terracotta">Beli Template →</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-paper-card rounded-xl border border-cocoa/30 text-xs">
+                            <div>
+                                <div class="font-bold text-cocoa">Absensi Siswa — Semester</div>
+                                <div class="text-[10px] text-cocoa/70">Rekapitulasi per semester</div>
+                            </div>
+                            <div class="text-right">
+                                <div class="font-bold text-terracotta font-heading">Rp 35.000</div>
+                                <a href="https://lynk.id/mrkey.sheet/3k03njjw9rrw" target="_blank" class="text-[10px] underline font-bold text-cocoa hover:text-terracotta">Beli Template →</a>
+                            </div>
+                        </div>
+
+                        <!-- Add-on shortcuts -->
+                        <div class="p-3 bg-paper-card rounded-xl border border-cocoa/30 text-xs space-y-1">
+                            <div class="font-bold text-cocoa">Shortcut & Formula Modul</div>
+                            <div class="text-[10px] text-cocoa/70">File 400+ Shortcut (Rp8.000)</div>
+                            <div class="text-[10px] text-cocoa/70">File Kumpulan Rumus (Rp15.000)</div>
+                            <div class="pt-1 flex justify-between items-center border-t border-cocoa/10 mt-1">
+                                <span class="font-bold text-terracotta text-[11px]">Bundle Dua File: Rp20.000</span>
+                                <a href="https://lynk.id/mrkey.sheet/5np0x3mylkj2" target="_blank" class="text-[10px] underline font-bold text-cocoa hover:text-terracotta">Beli Template →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Paket Belajar (Featured) -->
+                <div class="bg-paper p-6 rounded-2xl retro-border shadow-retro-lg border-2 border-terracotta space-y-4 relative bg-paper-light">
+                    <div class="flex items-center justify-between pb-3 border-b border-cocoa/20">
+                        <h4 class="font-heading font-bold text-lg text-cocoa flex items-center gap-2">
+                            <i data-lucide="book-open" class="w-5 h-5 text-terracotta"></i> Paket Jago Google Sheets
+                        </h4>
+                        <span class="text-[10px] font-bold bg-terracotta text-paper px-2 py-0.5 rounded">BUNDLED CLASS</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div class="text-3xl font-bold font-heading text-terracotta">Rp 40.000</div>
+                        <p class="text-xs text-cocoa/80">Paket komplit untuk Anda yang ingin mahir kuasai Google Sheets dari nol.</p>
+                        
+                        <div class="bg-paper p-3 rounded-xl border border-cocoa/30 text-xs space-y-2">
+                            <span class="font-bold text-cocoa block text-[11px]">Isi Paket Lengkap:</span>
+                            <ul class="space-y-1 text-cocoa/80 text-[11px]">
+                                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> File 400+ Shortcut Keyboard</li>
+                                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> File Kumpulan Rumus Siap Pakai</li>
+                                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> File Latihan & Soal Pilihan Ganda</li>
+                                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> 10 E-Book Google Sheets Lengkap</li>
+                                <li class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-terracotta"></i> Join Grup WhatsApp Diskusi</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                   <!-- Perhatikan tanda '>' di akhir baris class -->
+<a href="https://lynk.id/mrkey.sheet/1e1e5odglnzm" target="_blank" rel="noopener noreferrer"
+   class="w-full inline-flex items-center justify-center gap-2 bg-terracotta text-paper py-3 rounded-xl retro-border shadow-retro-sm font-heading font-bold text-sm hover:bg-terracotta-dark transition-all">
+    <i data-lucide="shopping-cart" class="w-4 h-4 pointer-events-none"></i>
+    <span class="pointer-events-none">Beli Paket Jago (Rp 40.000)</span>
+</a>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="py-20 border-b-2 border-cocoa bg-paper">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center mb-16">
+                <h2 class="text-xs font-bold text-terracotta uppercase tracking-widest mb-2 font-heading">FREQUENTLY ASKED QUESTIONS</h2>
+                <h3 class="text-3xl font-bold font-heading text-cocoa">Pertanyaan yang Sering Diajukan</h3>
+            </div>
+
+            <!-- Accordion List -->
+            <div class="space-y-4">
+                
+                <div class="bg-paper-card rounded-xl border-2 border-cocoa shadow-retro-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-heading font-bold text-cocoa flex items-center justify-between">
+                        <span>Apakah Key.Sheet hanya menerima project Google Sheets?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-terracotta transition-transform duration-200"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs sm:text-sm text-cocoa/80 hidden border-t border-cocoa/10 pt-3">
+                        Fokus utama kami adalah platform Google Sheets, termasuk pembuatan custom template, visualisasi dashboard, otomatisasi sistem, serta perbaikan/pengembangan spreadsheet yang sudah ada.
+                    </div>
+                </div>
+
+                <div class="bg-paper-card rounded-xl border-2 border-cocoa shadow-retro-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-heading font-bold text-cocoa flex items-center justify-between">
+                        <span>Apakah bisa menggunakan Google Apps Script?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-terracotta transition-transform duration-200"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs sm:text-sm text-cocoa/80 hidden border-t border-cocoa/10 pt-3">
+                        Sangat bisa. Untuk kebutuhan automation tertentu seperti pengiriman notifikasi email otomatis, generate PDF invoice, atau koneksi API, kami dapat menggunakan Google Apps Script sesuai ruang lingkup project.
+                    </div>
+                </div>
+
+                <div class="bg-paper-card rounded-xl border-2 border-cocoa shadow-retro-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-heading font-bold text-cocoa flex items-center justify-between">
+                        <span>Apakah bisa request fitur khusus?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-terracotta transition-transform duration-200"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs sm:text-sm text-cocoa/80 hidden border-t border-cocoa/10 pt-3">
+                        Bisa. Setiap project custom dirancang dari awal berdasarkan kebutuhan, alur operasional, dan istilah yang digunakan di bisnis Anda.
+                    </div>
+                </div>
+
+                <div class="bg-paper-card rounded-xl border-2 border-cocoa shadow-retro-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-heading font-bold text-cocoa flex items-center justify-between">
+                        <span>Berapa lama estimasi pengerjaannya?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-terracotta transition-transform duration-200"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs sm:text-sm text-cocoa/80 hidden border-t border-cocoa/10 pt-3">
+                        Waktu pengerjaan bervariasi bergantung pada kompleksitas data dan jumlah fitur. Untuk pengerjaan standar berkisar antara 2–5 hari kerja.
+                    </div>
+                </div>
+
+                <div class="bg-paper-card rounded-xl border-2 border-cocoa shadow-retro-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-heading font-bold text-cocoa flex items-center justify-between">
+                        <span>Apakah template yang dibeli memiliki biaya langganan bulanan?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-terracotta transition-transform duration-200"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs sm:text-sm text-cocoa/80 hidden border-t border-cocoa/10 pt-3">
+                        Tidak ada biaya langganan (*no monthly fees*). Produk template yang Anda beli sepenuhnya menjadi milik Anda dan dapat diakses selamanya selama layanan Google Sheets tersedia.
+                    </div>
+                </div>
+
+                <div class="bg-paper-card rounded-xl border-2 border-cocoa shadow-retro-sm overflow-hidden">
+                    <button onclick="toggleFaq(this)" class="w-full p-5 text-left font-heading font-bold text-cocoa flex items-center justify-between">
+                        <span>Apakah bisa memperbaiki spreadsheet yang sudah saya punya?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-terracotta transition-transform duration-200"></i>
+                    </button>
+                    <div class="px-5 pb-5 text-xs sm:text-sm text-cocoa/80 hidden border-t border-cocoa/10 pt-3">
+                        Bisa. Kami menyediakan layanan *Spreadsheet Optimization* untuk merapikan desain, memperbaiki formula error, merestrukturisasi data, serta mempercepat performa spreadsheet lama Anda.
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION -->
+    <section class="py-20 border-b-2 border-cocoa bg-paper-light relative overflow-hidden">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
+            <h2 class="text-3xl sm:text-5xl font-bold font-heading text-cocoa">
+                Punya Kebutuhan yang Ingin Dibuat?
+            </h2>
+            <p class="text-cocoa/80 max-w-2xl mx-auto text-base sm:text-lg">
+                Ceritakan kepada kami. Kami akan membantu mengubah kebutuhan usaha Anda menjadi sistem Google Sheets yang praktis & efisien.
+            </p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+                <a href="https://wa.me/6285871171523?text=Halo%20Key.Sheet,%20saya%20ingin%20konsultasi%20mengenai%20pembuatan%20system%20Google%20Sheets" 
+                   target="_blank" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-retro-green text-paper px-8 py-4 rounded-xl retro-border shadow-retro font-heading font-bold text-base hover:bg-opacity-90 transition-all">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    Konsultasi via WhatsApp
+                </a>
+                <button onclick="openBriefModal()" 
+                   class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-terracotta text-paper px-8 py-4 rounded-xl retro-border shadow-retro font-heading font-bold text-base hover:bg-terracotta-dark transition-all">
+                    <i data-lucide="file-text" class="w-5 h-5"></i>
+                    Kirim Brief Project
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-cocoa text-paper py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 pb-12 border-b border-paper/20">
+                
+                <div class="space-y-3 md:col-span-2">
+                    <div class="flex items-center gap-2">
+                       <img src="logo.png" alt="Key.Sheet" class="w-20 h-20 rounded-full object-cover" style="margin: 5px;">
+                        </div>
+                        <span class="font-bold text-xl text-paper" style="font-family: 'MuseoModerno', sans-serif;">Key.Sheet</span>
+                    </div>
+                    <p class="text-xs text-paper/80 max-w-sm leading-relaxed">
+                        Built Around Your Business. Membuat Google Sheets yang bukan sekadar spreadsheet, melainkan sistem kerja intuitif yang disesuaikan dengan kebutuhan Anda.
+                    </p>
+                </div>
+
+                <div>
+                    <h5 class="font-heading font-bold text-sm text-paper mb-3">Kontak</h5>
+                    <ul class="text-xs space-y-2 text-paper/80">
+                        <li>WhatsApp: <a href="https://wa.me/6285871171523" target="_blank" class="underline hover:text-terracotta">085871171523</a></li>
+                        <li>Email: <a href="mailto:mrkeysheet@gmail.com" class="underline hover:text-terracotta">mrkeysheet@gmail.com</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="font-heading font-bold text-sm text-paper mb-3">Media Sosial</h5>
+                    <ul class="text-xs space-y-2 text-paper/80">
+                        <li>Instagram: <a href="https://instagram.com" target="_blank" class="underline hover:text-terracotta">@Key.Sheet</a></li>
+                        <li>TikTok: <a href="https://tiktok.com" target="_blank" class="underline hover:text-terracotta">@Key.Sheet</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-paper/60">
+                <span>&copy; 2026 Key.Sheet. All rights reserved.</span>
+                <span class="mt-2 sm:mt-0 font-mono">Built Around Your Business</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL: PROJECT BRIEF GENERATOR -->
+    <div id="brief-modal" class="fixed inset-0 z-50 bg-cocoa/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-paper-card rounded-2xl retro-border shadow-retro-lg w-full max-w-lg overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-cocoa text-paper p-4 flex items-center justify-between">
+                <h3 class="font-heading font-bold text-base flex items-center gap-2">
+                    <i data-lucide="file-plus" class="w-4 h-4 text-terracotta"></i> Form Brief Project
+                </h3>
+                <button onclick="closeBriefModal()" class="text-paper/80 hover:text-paper font-bold text-lg">&times;</button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-4 custom-scrollbar text-xs">
+                <p class="text-cocoa/80">Isi detail kebutuhan Anda di bawah ini, kami akan langsung memformat pesannya untuk dikirim via WhatsApp.</p>
+                
+                <div class="space-y-1">
+                    <label class="font-bold text-cocoa block">Nama Anda / Nama Usaha</label>
+                    <input type="text" id="brief-name" placeholder="Contoh: Budi (Kedai Kopi Melati)" class="w-full p-2.5 rounded-lg border border-cocoa bg-paper text-cocoa focus:outline-none focus:ring-1 focus:ring-terracotta">
+                </div>
+
+                <div class="space-y-1">
+                    <label class="font-bold text-cocoa block">Jenis Layanan yang Dibutuhkan</label>
+                    <select id="brief-service" class="w-full p-2.5 rounded-lg border border-cocoa bg-paper text-cocoa focus:outline-none focus:ring-1 focus:ring-terracotta">
+                        <option value="Custom Google Sheets">01 — Custom Google Sheets</option>
+                        <option value="Dashboard & Visualization">02 — Dashboard & Data Visualization</option>
+                        <option value="Google Sheets Automation">03 — Google Sheets Automation</option>
+                        <option value="Spreadsheet Optimization">04 — Spreadsheet Optimization / Repair</option>
+                        <option value="Template siap pakai">05 — Pembelian Template Digital</option>
+                    </select>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="font-bold text-cocoa block">Deskripsi Singkat / Masalah yang Ingin Diselesaikan</label>
+                    <textarea id="brief-desc" rows="3" placeholder="Contoh: Ingin buat rekapitulasi stok bahan baku F&B otomatis dengan notifikasi saat stok menipis..." class="w-full p-2.5 rounded-lg border border-cocoa bg-paper text-cocoa focus:outline-none focus:ring-1 focus:ring-terracotta"></textarea>
+                </div>
+
+                <div class="space-y-1">
+                    <label class="font-bold text-cocoa block">Estimasi Budget Project</label>
+                    <select id="brief-budget" class="w-full p-2.5 rounded-lg border border-cocoa bg-paper text-cocoa focus:outline-none focus:ring-1 focus:ring-terracotta">
+                        <option value="Rp150.000 - Rp350.000">Starter (Rp150rb - Rp350rb)</option>
+                        <option value="Rp350.000 - Rp750.000">Business (Rp350rb - Rp750rb)</option>
+                        <option value="> Rp750.000">Custom / Enterprise (> Rp750rb)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="p-4 bg-paper border-t border-cocoa/20 flex gap-3 justify-end">
+                <button onclick="closeBriefModal()" class="px-4 py-2 rounded-xl border border-cocoa text-cocoa font-bold text-xs">Batal</button>
+                <button onclick="sendBriefWhatsApp()" class="px-5 py-2 bg-terracotta text-paper rounded-xl retro-border shadow-retro-sm font-bold text-xs flex items-center gap-1.5 hover:bg-terracotta-dark">
+                    <i data-lucide="send" class="w-3.5 h-3.5"></i> Kirim Brief via WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL: PORTFOLIO DETAIL POPUP -->
+    <div id="port-modal" class="fixed inset-0 z-50 bg-cocoa/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-paper-card rounded-2xl retro-border shadow-retro-lg w-full max-w-xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div class="bg-cocoa text-paper p-4 flex items-center justify-between">
+                <h3 id="port-modal-title" class="font-heading font-bold text-base">Detail Project Portfolio</h3>
+                <button onclick="closePortModal()" class="text-paper/80 hover:text-paper font-bold text-lg">&times;</button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-4 custom-scrollbar text-xs text-cocoa" id="port-modal-body">
+                <!-- Dynamically Filled -->
+            </div>
+
+            <div class="p-4 bg-paper border-t border-cocoa/20 flex justify-end">
+                <button onclick="closePortModal()" class="px-5 py-2 bg-cocoa text-paper rounded-xl font-bold text-xs">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // FAQ Toggle Logic
+        function toggleFaq(button) {
+            const content = button.nextElementSibling;
+            const icon = button.querySelector('i');
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Portfolio Filter Logic
+        function filterPortfolio(category) {
+            const buttons = document.querySelectorAll('.port-filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active', 'bg-cocoa', 'text-paper');
+                btn.classList.add('bg-paper-card', 'text-cocoa');
+            });
+
+            event.target.classList.add('active', 'bg-cocoa', 'text-paper');
+            event.target.classList.remove('bg-paper-card', 'text-cocoa');
+
+            const cards = document.querySelectorAll('.port-card');
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Portfolio Data for Modal Detail
+        const portfolioData = {
+            1: {
+                title: "Custom Template Keuangan F&B",
+                category: "Custom Google Sheets",
+                image: "portfolio-fnb-finance.png",
+                masalah: "Pemilik bisnis F&B membutuhkan sistem sederhana untuk mencatat transaksi harian, pengeluaran operasional, dan memantau kondisi keuangan secara real-time.",
+                solusi: "Dibuatkan sistem terpadu F&B yang menggabungkan pencatatan kas harian, profitabilitas menu, dan laporan bulanan otomatis.",
+                fitur: ["Pencatatan transaksi kasir", "Rekap harian pemasukan & pengeluaran", "Perhitungan net profit otomatis", "Update harga menu tanpa mengubah histori terdahulu", "Perbandingan data dengan bulan sebelumnya", "10 Menu paling terpopuler & kurang diminati", "Rincian pendapatan dari kategori menu"],
+                hasil: "Data keuangan terstruktur, memudahkan owner melihat performa menu terbaik dan memantau arus kas."
+            },
+            2: {
+                title: "Custom Template Data Booking & Stok Barang",
+                category: "Custom Google Sheets",
+                image: "portfolio-booking-stock.png",
+                masalah: "Pemilik usaha rental bingung memantau jadwal sewa barang dan stok yang masih ready di gudang.",
+                solusi: "Dibuatkan sistem terpusat data booking, stok real-time, dan kalender jadwal pengembalian otomatis.",
+                fitur: ["Pencatatan data penyewa & jaminan", "Kalender otomatisasi jam sewa & waktu kembali", "Automatic stock level tracker"],
+                hasil: "Proses verifikasi barang sewa jauh lebih cepat dan terhindar dari pemesanan ganda (double booking)."
+            },
+            3: {
+                title: "Custom Template Arus Kas & Ticketing Wisata",
+                category: "Custom Google Sheets",
+                image: "portfolio-ticketing.png",
+                masalah: "Pengelola objek wisata kesulitan menghitung jumlah wisatawan harian dan pengelompokan jenis tiket.",
+                solusi: "Dibuatkan tabel input pengunjung yang terfilter per kategori tiket lengkap dengan arus kas masuk.",
+                fitur: ["Pencatatan kategori tiket wisatawan", "Rekap pendapatan harian/bulanan", "Pencatatan kas operasional", "Dashboard ringkasan pengunjung"],
+                hasil: "Pemilik wisata memantau arus kas dan tren kunjungan wisatawan dengan cepat dan intuitif."
+            },
+            4: {
+                title: "Custom Template Absensi Siswa",
+                category: "Custom Google Sheets",
+                image: "portfolio-attendance.png",
+                masalah: "Wali kelas masih rekap absensi manual di kertas sehingga memakan waktu lama.",
+                solusi: "Dibuat sistem absensi otomatis 1 Sheet = 1 Bulan dengan formula kalkulasi status siswa.",
+                fitur: ["Dropdown status (Hadir, Izin, Sakit, Alpa)", "Hari Sabtu/Minggu & Libur Nasional otomatis merah", "Rekap semester & tahunan otomatis"],
+                hasil: "Wali kelas hemat waktu rekap hingga 80% dan meminimalisir kesalahan hitung."
+            },
+            5: {
+                title: "Custom Template Hutang Piutang Perusahaan",
+                category: "Custom Google Sheets",
+                image: "portfolio-debt.png",
+                masalah: "Sulit mengontrol invoice jatuh tempo dan daftar perusahaan mitra yang belum lunas.",
+                solusi: "Dibuatkan struktur 1 tabel per perusahaan mitra dengan kalkulasi sisa piutang otomatis.",
+                fitur: ["Otomatis hitung sisa tagihan", "Filter status (Lunas / Berjalan)", "Minimize tabel perusahaan yang sudah lunas"],
+                hasil: "Tracking pembayaran piutang B2B lebih tertata rapi dan terminimalisir dari tagihan macet."
+            },
+            6: {
+                title: "Dashboard Laporan Keuangan F&B",
+                category: "Dashboard & Data Visualization",
+                image: "portfolio-fnb-dashboard.png",
+                masalah: "Data keuangan tersedia banyak tetapi sulit dibaca cepat oleh owner.",
+                solusi: "Visualisasi data transaksi menjadi dashboard KPI, tren grafik, dan visual perbandingan.",
+                fitur: ["KPI Scorecards", "Grafik tren omzet & profit", "Filter rentang tanggal interaktif"],
+                hasil: "Owner bisa mengambil keputusan bisnis lebih cepat cukup dengan melihat 1 halaman dashboard."
+            },
+            7: {
+                title: "Google Sheets Email Notification",
+                category: "Google Sheets Automation",
+                image: "portopolio-automation.png",
+                masalah: "Informasi laporan harian harus dikirim manual satu per satu ke email manajemen.",
+                solusi: "Pemicu Apps Script otomatis mendeteksi kondisi spreadsheet dan mengirim notifikasi email.",
+                fitur: ["Trigger jadwal waktu otomatis", "Custom HTML Email Template", "Conditional Alert"],
+                hasil: "Manajemen menerima laporan bisnis tepat waktu di inbox email tanpa perlu pusing cek file manual."
+            }
+        };
+
+      function openPortModal(id) {
+    const data = portfolioData[id];
+    if (!data) return;
+
+    // 1. Set judul modal
+    const titleEl = document.getElementById('port-modal-title');
+    if (titleEl) {
+        titleEl.innerText = data.title;
+    }
+    
+    // 2. Buat template HTML modal
+    let html = `
+        <div class="space-y-3">
+            <span class="inline-block bg-terracotta/20 text-terracotta px-2.5 py-0.5 rounded font-bold text-[10px]">${data.category}</span>
+            
+            ${data.image ? `
+                <div class="w-full overflow-hidden rounded-lg border border-cocoa/20 my-2">
+                    <img id="modal-img-animated" src="images/${data.image}" alt="${data.title}" class="w-full h-auto object-cover block fade-in-image" onerror="this.onerror=null; this.src='${data.image}';">
+                </div>
+            ` : ''}
+
+            <div>
+                <strong class="text-cocoa font-bold block mb-1">Masalah:</strong>
+                <p class="text-cocoa/80 bg-paper p-3 rounded border border-cocoa/20">${data.masalah}</p>
+            </div>
+            <div>
+                <strong class="text-cocoa font-bold block mb-1">Solusi Key.Sheet:</strong>
+                <p class="text-cocoa/80 bg-paper p-3 rounded border border-cocoa/20">${data.solusi}</p>
+            </div>
+            <div>
+                <strong class="text-cocoa font-bold block mb-1">Fitur yang Disediakan:</strong>
+                <ul class="list-disc list-inside space-y-1 text-cocoa/80 pl-1">
+                    ${data.fitur.map(f => `<li>${f}</li>`).join('')}
+                </ul>
+            </div>
+            <div class="pt-2 border-t border-cocoa/20">
+                <strong class="text-retro-green font-bold block">Hasil Nyata:</strong>
+                <p class="text-cocoa font-semibold">${data.hasil}</p>
+            </div>
+        </div>
+    `;
+
+    // 3. Masukkan HTML ke isi modal
+    const bodyEl = document.getElementById('port-modal-body');
+    if (bodyEl) {
+        bodyEl.innerHTML = html;
+    }
+
+    // 4. Buka elemen modal (menghilangkan class hidden jika ada)
+    const modalEl = document.getElementById('port-modal');
+    if (modalEl) {
+        modalEl.classList.remove('hidden');
+    }
+
+    // 5. Picu animasi gambar
+    setTimeout(() => {
+        const img = document.getElementById('modal-img-animated');
+        if (img) img.classList.add('show');
+    }, 50);
+}
+        function closePortModal() {
+            document.getElementById('port-modal').classList.add('hidden');
+        }
+
+        // Project Brief Modal Generator Logic
+        function openBriefModal() {
+            document.getElementById('brief-modal').classList.remove('hidden');
+        }
+
+        function closeBriefModal() {
+            document.getElementById('brief-modal').classList.add('hidden');
+        }
+
+        function sendBriefWhatsApp() {
+            const name = document.getElementById('brief-name').value.trim() || 'Client';
+            const service = document.getElementById('brief-service').value;
+            const desc = document.getElementById('brief-desc').value.trim() || '-';
+            const budget = document.getElementById('brief-budget').value;
+
+            const message = `Halo Key.Sheet, saya ingin mengirimkan Brief Project:%0A%0A` +
+                            `👤 *Nama/Usaha:* ${encodeURIComponent(name)}%0A` +
+                            `📌 *Layanan:* ${encodeURIComponent(service)}%0A` +
+                            `📝 *Deskripsi Kebutuhan:* ${encodeURIComponent(desc)}%0A` +
+                            `💰 *Estimasi Budget:* ${encodeURIComponent(budget)}%0A%0A` +
+                            `Mohon diinfokan langkah selanjutnya. Terima kasih!`;
+
+            window.open(`https://wa.me/6285871171523?text=${message}`, '_blank');
+            closeBriefModal();
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15 // Animasi berjalan saat 15% elemen terlihat di layar
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                // Hentikan pengamatan agar animasi hanya berjalan sekali
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Otomatis mencari semua elemen yang memakai class .reveal-on-scroll
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    revealElements.forEach(el => scrollObserver.observe(el));
+});
+
+// Pengamat Scroll Otomatis
+document.addEventListener("DOMContentLoaded", function() {
+    const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.15
+    };
+
+    const scrollObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    // Otomatis menargetkan semua section & kartu ber-border retro
+    const targetElements = document.querySelectorAll('section, .retro-border');
+    
+    targetElements.forEach(el => {
+        el.classList.add('reveal-on-scroll');
+        scrollObserver.observe(el);
+    });
+});
+
+    </script>
+</body>
+</html>
+
